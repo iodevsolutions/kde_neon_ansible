@@ -3,9 +3,11 @@
   pre_tasks:
     - name: refresh repositories
       shell: pkcon refresh
+      register: refresh_output
       ignore_errors: true
     - name: update repositories
       shell: pkcon update -y
+      register: update_output
       ignore_errors: true
 
   tasks:

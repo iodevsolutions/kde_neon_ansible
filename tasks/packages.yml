@@ -1,12 +1,6 @@
 - name: Install htop package
   shell: pkcon install htop -y
 
-- name: Install vim package
-  shell: pkcon install vim -y
-
-- name: Install curl package
-  shell: pkcon install curl -y
-
 - name: Install zsh package
   shell: pkcon install zsh -y
 
