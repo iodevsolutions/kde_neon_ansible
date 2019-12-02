@@ -2,11 +2,11 @@
   become: true
   pre_tasks:
     - name: refresh repositories
-      shell: sudo pkcon refresh
-      register: refresh_output
+      shell: pkcon refresh
+      ignore_errors: true
     - name: update repositories
-      shell: sudo pkcon update -y
-      register: update_output
+      shell: pkcon update -y
+      ignore_errors: true
 
   tasks:
     - include: tasks/users.yml
