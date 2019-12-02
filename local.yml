@@ -13,4 +13,3 @@
     - include: tasks/packages.yml
     - include: tasks/config_zsh.yml
     - include: tasks/copy_assets.yml
-    - include: tasks/plasma.yml
