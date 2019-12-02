@@ -1,0 +1,16 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: refresh repositories
+      shell: pkcon refresh
+
+    - name: update repositories
+      shell: pkcon update -y
+
+  tasks:
+    - include: tasks/users.yml
+    - include: tasks/cron.yml
+    - include: tasks/packages.yml
+    - include: tasks/config_zsh.yml
+    - include: tasks/copy_assets.yml
+    - include: tasks/plasma.yml

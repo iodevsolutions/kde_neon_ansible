@@ -1,0 +1,22 @@
+- name: Check for existing Oh My Zsh installation
+  stat: path=/home/orndorff/.oh-my-zsh
+  register: p
+
+- name: Download Oh My Zsh installer
+  become_user: orndorff
+  get_url: url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh dest=/home/orndorff/Downloads/zsh-installer.sh
+  when: not p.stat.exists
+
+- name: Execute the zsh-installer.sh
+  become_user: orndorff
+  script: /home/orndorff/Downloads/zsh-installer.sh
+  when: not p.stat.exists
+
+- name: Remove the zsh-installer.sh
+  become_user: orndorff
+  file: path=/home/orndorff/Downloads/zsh-installer.sh state=absent
+  when: not p.stat.exists
+
+- name: Change the default shell to ZSH
+  shell: chsh -s $(which zsh) orndorff
+  when: not p.stat.exists
