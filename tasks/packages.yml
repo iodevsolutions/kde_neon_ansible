@@ -1,11 +1,29 @@
 - name: Install htop package
   shell: pkcon install htop -y
+  register: install_htop_output
+  ignore_errors: true
+
+- name: Install vim package
+  shell: pkcon install vim -y
+  register: install_vim_output
+  ignore_errors: true
+
+- name: Install curl package
+  shell: pkcon install curl -y
+  register: install_curl_output
+  ignore_errors: true
 
 - name: Install zsh package
   shell: pkcon install zsh -y
+  register: install_curl_output
+  ignore_errors: true
 
 - name: Install fonts-powerline package
   shell: pkcon install fonts-powerline -y
+  register: install_fonts_powerline_output
+  ignore_errors: true
 
 - name: Install neofetch package
   shell: pkcon install neofetch -y
+  register: install_neofetch_output
+  ignore_errors: true
