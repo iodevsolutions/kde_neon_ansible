@@ -2,10 +2,10 @@
   become: true
   pre_tasks:
     - name: refresh repositories
-      shell: pkcon refresh
+      shell: sudo pkcon refresh
       register: refresh_output
     - name: update repositories
-      shell: pkcon update -y
+      shell: sudo pkcon update -y
       register: update_output
 
   tasks:
