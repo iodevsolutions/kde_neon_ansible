@@ -15,7 +15,10 @@
 
 - name: Extract theme
   become_user: orndorff
-  shell: tar -xf /home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz -C /home/orndorff/Downloads
+  unarchive: 
+    src:  /home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz 
+    dest: /home/orndorff/Downloads
+    remote_src: yes 
 
 - name: Move theme
   become_user: orndorff
