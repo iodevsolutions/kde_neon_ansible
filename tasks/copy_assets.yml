@@ -24,7 +24,7 @@
   become_user: orndorff
   copy: 
     src: /home/orndorff/Downloads/Materia-Manjaro-Dark 
-    dest: /home/orndorff/.local/share/plasma/look-and-feel
+    dest: /home/orndorff/.local/share/plasma/look-and-feel/
     remote_src: yes
 
 - name: Copy color scheme
@@ -42,7 +42,10 @@
 
 - name: Move color scheme
   become_user: orndorff
-  shell: mv /home/orndorff/Downloads/Adapt*.colors /home/orndorff/.local/share/color-schemes
+  copy:
+    src: /home/orndorff/Downloads/Adapt*.colors 
+    dest: /home/orndorff/.local/share/color-schemes/
+    remote_src: yes
 
 - name: Copy window decorations
   become_user: orndorff
@@ -59,7 +62,10 @@
 
 - name: Move window decorations
   become_user: orndorff
-  shell: mv /home/orndorff/Downloads/K01* /home/orndorff/.local/share/aurorae/themes
+  copy:
+    src: /home/orndorff/Downloads/K01* 
+    dest: /home/orndorff/.local/share/aurorae/themes/
+    remote_src: yes
 
 - name: Copy kconsole color theme
   become_user: orndorff
@@ -76,7 +82,10 @@
 
 - name: Move kconsole color theme
   become_user: orndorff
-  shell: mv /home/orndorff/Downloads/MateriaManjaro.colorscheme /home/orndorff/.local/share/konsole
+  copy: 
+    src: /home/orndorff/Downloads/MateriaManjaro.colorscheme 
+    dest: /home/orndorff/.local/share/konsole/
+    remote_src: yes
 
 - name: Copy Google font
   become_user: orndorff
