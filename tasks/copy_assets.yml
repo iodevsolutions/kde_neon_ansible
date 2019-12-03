@@ -3,13 +3,12 @@
   copy: 
     src: files/Starry-Nebula-108-4K.jpg 
     dest: /usr/share/wallpapers/Starry_Nebula_108 
-    owner: orndorff 
-    group: orndorff 
-    mode: 600
     
 - name: Copy theme
   become_user: orndorff
-  copy: src=files/Materia-Manjaro-Dark.tar.gz dest=/home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz
+  copy: 
+    src: files/Materia-Manjaro-Dark.tar.gz 
+    dest: /home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz
 
 - name: Extract theme
   become_user: orndorff
@@ -21,7 +20,9 @@
 
 - name: Copy color scheme
   become_user: orndorff
-  copy: src=files/color-schemes.tar.gz dest=/home/orndorff/Downloads/color-schemes.tar.gz
+  copy: 
+    src: files/color-schemes.tar.gz 
+    dest: /home/orndorff/Downloads/color-schemes.tar.gz
 
 - name: Extract color scheme
   become_user: orndorff
@@ -33,11 +34,13 @@
 
 - name: Copy window decorations
   become_user: orndorff
-  copy: src=files/'WindowsK10(0.6.2).tar.gz' dest=/home/orndorff/Downloads/'WindowsK10(0.6.2).tar.gz'
+  copy: 
+    src: files/WindowsK10-0.6.2.tar.gz 
+    dest: /home/orndorff/Downloads/WindowsK10-0.6.2.tar.gz
 
 - name: Extract window decorations
   become_user: orndorff
-  shell: tar -xvf /home/orndorff/Downloads/'WindowsK10(0.6.2).tar.gz'
+  shell: tar -xvf /home/orndorff/Downloads/WindowsK10-0.6.2.tar.gz
 
 - name: Move window decorations
   become_user: orndorff
@@ -45,7 +48,9 @@
 
 - name: Copy kconsole color theme
   become_user: orndorff
-  copy: src=files/konsole.tar.gz dest=/home/orndorff/Downloads/konsole.tar.gz
+  copy: 
+    src: files/konsole.tar.gz 
+    dest: /home/orndorff/Downloads/konsole.tar.gz
 
 - name: Extract kconsole color theme
   become_user: orndorff
@@ -57,7 +62,9 @@
 
 - name: Copy Google font
   become_user: orndorff
-  copy: src=files/Montserrat.zip dest=/home/orndorff/Downloads/Montserrat.zip
+  copy: 
+    src: files/Montserrat.zip 
+    dest: /home/orndorff/Downloads/Montserrat.zip
 
 - name: Make Google font directory
   shell: mkdir /usr/share/fonts/googlefonts
