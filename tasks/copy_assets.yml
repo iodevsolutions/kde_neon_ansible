@@ -5,7 +5,7 @@
     dest: /usr/share/wallpapers/Starry-Nebula-108/
     owner: orndorff
     group: orndorff
-    mode: 0600
+    mode: '0600'
     
 - name: Copy theme
   become_user: orndorff
@@ -20,11 +20,18 @@
     dest: /home/orndorff/Downloads
     remote_src: yes 
 
+- name: Create theme directory
+  become_user: orndorff
+  file:
+    path: /home/orndorff/.local/share/plasma/look-and-feel/
+    state: directory
+    mode: '0755'
+
 - name: Move theme
   become_user: orndorff
   copy: 
     src: /home/orndorff/Downloads/Materia-Manjaro-Dark 
-    dest: /home/orndorff/.local/share/plasma/look-and-feel/
+    dest: /home/orndorff/.local/share/plasma/look-and-feel
     remote_src: yes
 
 - name: Copy color scheme
@@ -40,11 +47,18 @@
     dest: /home/orndorff/Downloads
     remote_src: yes
 
+- name: Create color scheme directory
+  become_user: orndorff
+  file:
+    path: /home/orndorff/.local/share/color-schemes/
+    state: directory
+    mode: '0755'
+
 - name: Move color scheme
   become_user: orndorff
   copy:
     src: /home/orndorff/Downloads/Adapt*.colors 
-    dest: /home/orndorff/.local/share/color-schemes/
+    dest: /home/orndorff/.local/share/color-schemes
     remote_src: yes
 
 - name: Copy window decorations
@@ -60,11 +74,18 @@
     dest: /home/orndorff/Downloads
     remote_src: yes
 
+- name: Create window decorations directory
+  become_user: orndorff
+  file:
+    path: home/orndorff/.local/share/aurorae/themes/
+    state: directory
+    mode: '0755'
+
 - name: Move window decorations
   become_user: orndorff
   copy:
     src: /home/orndorff/Downloads/K01* 
-    dest: /home/orndorff/.local/share/aurorae/themes/
+    dest: /home/orndorff/.local/share/aurorae/themes
     remote_src: yes
 
 - name: Copy kconsole color theme
@@ -95,8 +116,11 @@
 
 - name: Make Google font directory
   become_user: root
-  shell: mkdir /usr/share/fonts/googlefonts
-
+  file:
+    path: /usr/share/fonts/googlefonts/
+    state: directory
+    mode: '0755'
+  
 - name: Unzip Google font to new directory
   become_user: root
   unarchive:
