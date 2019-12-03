@@ -84,7 +84,7 @@
 - name: Create window decorations directory
   become_user: orndorff
   file:
-    path: home/orndorff/.local/share/aurorae/themes/
+    path: /home/orndorff/.local/share/aurorae/themes/
     state: directory
     mode: '0755'
 
