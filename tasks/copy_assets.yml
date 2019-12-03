@@ -54,10 +54,17 @@
     state: directory
     mode: '0755'
 
-- name: Move color scheme
+- name: Move color scheme part one
   become_user: orndorff
   copy:
-    src: /home/orndorff/Downloads/Adapt*.colors 
+    src: /home/orndorff/Downloads/Adapta.colors 
+    dest: /home/orndorff/.local/share/color-schemes
+    remote_src: yes
+
+- name: Move color scheme part two
+  become_user: orndorff
+  copy:
+    src: /home/orndorff/Downloads/AdaptaNokto.colors
     dest: /home/orndorff/.local/share/color-schemes
     remote_src: yes
 
@@ -81,10 +88,17 @@
     state: directory
     mode: '0755'
 
-- name: Move window decorations
+- name: Move window decorations part one
   become_user: orndorff
   copy:
-    src: /home/orndorff/Downloads/K01* 
+    src: /home/orndorff/Downloads/K01
+    dest: /home/orndorff/.local/share/aurorae/themes
+    remote_src: yes
+
+- name: Move window decorations part two
+  become_user: orndorff
+  copy:
+    src: /home/orndorff/Downloads/K01-d
     dest: /home/orndorff/.local/share/aurorae/themes
     remote_src: yes
 
