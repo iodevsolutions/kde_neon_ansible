@@ -2,10 +2,10 @@
   become_user: root
   copy: 
     src: files/Starry-Nebula-108-4K.jpg 
-    dest: /usr/share/wallpapers/Starry_Nebula_108
+    dest: /usr/share/wallpapers/Starry-Nebula-108/
     owner: orndorff
     group: orndorff
-    mode: '0600'
+    mode: 0600
     
 - name: Copy theme
   become_user: orndorff
@@ -16,13 +16,16 @@
 - name: Extract theme
   become_user: orndorff
   unarchive: 
-    src:  /home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz 
+    src: /home/orndorff/Downloads/Materia-Manjaro-Dark.tar.gz 
     dest: /home/orndorff/Downloads
     remote_src: yes 
 
 - name: Move theme
   become_user: orndorff
-  shell: mv /home/orndorff/Downloads/Materia-Manjaro-Dark /home/orndorff/.local/share/plasma/look-and-feel
+  copy: 
+    src: /home/orndorff/Downloads/Materia-Manjaro-Dark 
+    dest: /home/orndorff/.local/share/plasma/look-and-feel
+    remote_src: yes
 
 - name: Copy color scheme
   become_user: orndorff
@@ -32,7 +35,10 @@
 
 - name: Extract color scheme
   become_user: orndorff
-  shell: tar -xvf /home/orndorff/Downloads/color-schemes.tar.gz -C /home/orndorff/Downloads
+  unarchive:
+    src: /home/orndorff/Downloads/color-schemes.tar.gz
+    dest: /home/orndorff/Downloads
+    remote_src: yes
 
 - name: Move color scheme
   become_user: orndorff
@@ -46,7 +52,10 @@
 
 - name: Extract window decorations
   become_user: orndorff
-  shell: tar -xvf /home/orndorff/Downloads/WindowsK10-0.6.2.tar.gz -C /home/orndorff/Downloads
+  unarchive:
+    src: /home/orndorff/Downloads/WindowsK10-0.6.2.tar.gz 
+    dest: /home/orndorff/Downloads
+    remote_src: yes
 
 - name: Move window decorations
   become_user: orndorff
@@ -60,7 +69,10 @@
 
 - name: Extract kconsole color theme
   become_user: orndorff
-  shell: tar -xvf /home/orndorff/Downloads/konsole.tar.gz -C /home/orndorff/Downloads
+  unarchive: 
+    src: /home/orndorff/Downloads/konsole.tar.gz
+    dest: /home/orndorff/Downloads
+    remote_src: yes
 
 - name: Move kconsole color theme
   become_user: orndorff
@@ -73,10 +85,15 @@
     dest: /home/orndorff/Downloads/Montserrat.zip
 
 - name: Make Google font directory
+  become_user: root
   shell: mkdir /usr/share/fonts/googlefonts
 
 - name: Unzip Google font to new directory
-  shell: unzip -d /usr/share/fonts/googlefonts /home/orndorff/Downloads/Montserrat.zip
+  become_user: root
+  unarchive:
+    src: /home/orndorff/Downloads/Montserrat.zip 
+    dest: /usr/share/fonts/googlefonts
+    remote_src: yes
 
 - name: Create reference to new Google font directory
   shell: chmod -R --reference=/usr/share/fonts/opentype /usr/share/fonts/googlefonts
