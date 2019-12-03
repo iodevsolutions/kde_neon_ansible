@@ -1,8 +1,11 @@
 - name: Copy wallpaper
-  become_user: true
+  become_user: root
   copy: 
     src: files/Starry-Nebula-108-4K.jpg 
-    dest: /usr/share/wallpapers/Starry_Nebula_108 
+    dest: /usr/share/wallpapers/Starry_Nebula_108
+    owner: orndorff
+    group: orndorff
+    mode: '0600'
     
 - name: Copy theme
   become_user: orndorff
